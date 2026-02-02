@@ -59,4 +59,16 @@ app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
 
-app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+
+server.on('error', (e) => {
+  if (e.code === 'EADDRINUSE') {
+    console.error(`ERROR: Port ${PORT} is already in use.`);
+    console.error(`Please stop the other process running on port ${PORT} or change the PORT in your .env file.`);
+    // Optionally, we could try to listen on PORT + 1, but since frontend expects 5000:
+    console.error(`Exiting...`);
+    process.exit(1);
+  } else {
+    console.error(e);
+  }
+});

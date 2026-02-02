@@ -1,6 +1,6 @@
 import ProductImageUpload from "@/components/admin-view/image-upload";
 import { Button } from "@/components/ui/button";
-import { addFeatureImage, getFeatureImages } from "@/store/common-slice";
+import { addFeatureImage, getFeatureImages, deleteFeatureImage } from "@/store/common-slice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -52,6 +52,19 @@ function AdminDashboard() {
                 src={featureImgItem.image}
                 className="w-full h-[300px] object-cover rounded-t-lg"
               />
+              <Button
+                onClick={() => {
+                  dispatch(deleteFeatureImage(featureImgItem._id)).then((data) => {
+                    if (data?.payload?.success) {
+                      dispatch(getFeatureImages());
+                    }
+                  });
+                }}
+                variant="destructive"
+                className="absolute top-2 right-2" // Positioning the button
+              >
+                Delete
+              </Button>
             </div>
           ))
           : null}
