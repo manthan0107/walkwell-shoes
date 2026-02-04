@@ -7,6 +7,9 @@ import AdminDashboard from "./pages/admin-view/dashboard";
 import AdminProducts from "./pages/admin-view/products";
 import AdminOrders from "./pages/admin-view/orders";
 import AdminFeatures from "./pages/admin-view/features";
+import AdminContact from "./pages/admin-view/contact";
+import AdminAddProduct from "./pages/admin-view/add-product";
+import AdminUsers from "./pages/admin-view/users";
 import ShoppingLayout from "./components/shopping-view/layout";
 import NotFound from "./pages/not-found";
 import ShoppingHome from "./pages/shopping-view/home";
@@ -23,6 +26,7 @@ import PaypalReturnPage from "./pages/shopping-view/paypal-return";
 import PaymentSuccessPage from "./pages/shopping-view/payment-success";
 import SearchProducts from "./pages/shopping-view/search";
 import WalkwellAboutPage from "./pages/about/about"
+import ShoppingContact from "./pages/shopping-view/contact";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -77,6 +81,9 @@ function App() {
           <Route path="products" element={<AdminProducts />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="features" element={<AdminFeatures />} />
+          <Route path="contact" element={<AdminContact />} />
+          <Route path="add-product" element={<AdminAddProduct />} />
+          <Route path="users" element={<AdminUsers />} />
         </Route>
         <Route
           path="/shop"
@@ -94,6 +101,7 @@ function App() {
           <Route path="payment-success" element={<PaymentSuccessPage />} />
           <Route path="search" element={<SearchProducts />} />
           <Route path="about" element={<WalkwellAboutPage />} />
+          <Route path="contact" element={<ShoppingContact />} />
         </Route>
         <Route path="/unauth-page" element={<UnauthPage />} />
         <Route path="*" element={<NotFound />} />

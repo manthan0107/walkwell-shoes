@@ -63,22 +63,7 @@ function AdminProducts() {
           setCurrentEditedId(null);
         }
       })
-      : dispatch(
-        addNewProduct({
-          ...formData,
-          image: uploadedImageUrl,
-        })
-      ).then((data) => {
-        if (data?.payload?.success) {
-          dispatch(fetchAllProducts());
-          setOpenCreateProductsDialog(false);
-          setImageFile(null);
-          setFormData(initialFormData);
-          toast({
-            title: "Product add successfully",
-          });
-        }
-      });
+      : null; // Add functionality removed from here
   }
 
   function handleDelete(getCurrentProductId) {
@@ -113,10 +98,8 @@ function AdminProducts() {
 
   return (
     <Fragment>
-      <div className="mb-5 w-full flex justify-end">
-        <Button onClick={() => setOpenCreateProductsDialog(true)}>
-          Add New Product
-        </Button>
+      <div className='mb-5 w-full flex justify-between' >
+        <h1 className='text-3xl font-bold'>All Products</h1>
       </div>
       <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
         {productList && productList.length > 0
@@ -142,7 +125,7 @@ function AdminProducts() {
         <SheetContent side="right" className="overflow-auto">
           <SheetHeader>
             <SheetTitle>
-              {currentEditedId !== null ? "Edit Product" : "Add New Product"}
+              Edit Product
             </SheetTitle>
           </SheetHeader>
           <ProductImageUpload
@@ -159,7 +142,7 @@ function AdminProducts() {
               onSubmit={onSubmit}
               formData={formData}
               setFormData={setFormData}
-              buttonText={currentEditedId !== null ? "Edit" : "Add"}
+              buttonText="Edit"
               formControls={addProductFormElements}
               isBtnDisabled={!isFormValid() || imageLoadingState}
             />

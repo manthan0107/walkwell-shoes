@@ -73,7 +73,7 @@ export const addProductFormElements = [
       { id: "nike", label: "Nike" },
       { id: "adidas", label: "Adidas" },
       { id: "puma", label: "Puma" },
-      
+
     ],
   },
   {
@@ -124,6 +124,11 @@ export const shoppingViewHeaderMenuItems = [
     id: "about",
     label: "About",
     path: "/shop/about",
+  },
+  {
+    id: "contact",
+    label: "Contact",
+    path: "/shop/contact",
   }
 ];
 
